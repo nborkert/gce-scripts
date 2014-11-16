@@ -1,0 +1,39 @@
+gcloud compute instances create my-ins --image centos-7 --machine-type n1-standard-1
+
+
+gcloud compute instances create my-ins --image centos-7 --machine-type n1-highmem-16
+
+gcloud compute copy-files /Users/ndborkedaunt/Downloads/google-compute-engine/go1.3.3.linux-amd64.tar.gz my-ins:~/goInstall.tar.gz
+
+gcloud compute ssh my-ins
+
+ON MY INSTANCE, INSTALL go
+sudo tar -C /usr/local -xzf goInstall.tar.gz
+
+vi .bash_profile
+ADD THIS TO FILE
+
+export PATH=$PATH:/usr/local/go/bin
+
+export GOPATH=$HOME/wrk
+
+export PATH=$PATH:$GOPATH/bin
+
+NEED TO MOVE MY SOURCE OVER
+
+FROM INSIDE MY ~/Downloads/golang directory:
+tar -cf wrk.tar wrk
+
+AFTER COMPRESSING AND MOVING MY /wrk directory to the google-compute-engine directory, do this:
+gcloud compute copy-files /Users/ndborkedaunt/Downloads/google-compute-engine/wrk.tar my-ins:~/wrk.tar
+
+UNCOMPRESS CODE
+tar xf wrk.tar
+
+Work away!
+
+Remember to delete instances
+gcloud compute instances delete my-ins
+
+
+

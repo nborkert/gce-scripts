@@ -1,0 +1,9 @@
+# Identify image during creation
+gcloud compute instances create my-ins-std --image my-ins-image --machine-type n1-standard-1
+
+# For a large instance, do this
+gcloud compute instances create my-ins-large --image my-ins-image --machine-type n1-highmem-16
+
+
+
+

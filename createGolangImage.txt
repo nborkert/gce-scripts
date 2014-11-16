@@ -1,0 +1,44 @@
+# Do each of these steps manually
+
+# create base image 
+gcloud compute instances create my-ins --image centos-7 --machine-type n1-standard-1
+
+# download the latest golang SDK for Linux using my browser and save to local location, if needed
+# upload the golang SDK for Linux
+gcloud compute copy-files /Users/ndborkedaunt/Downloads/google-compute-engine/go1.3.3.linux-amd64.tar.gz my-ins:~/goInstall.tar.gz
+
+
+# Connect to instance
+gcloud compute ssh my-ins
+
+
+# on the created instance, install the golang SDK
+sudo tar -C /usr/local -xzf goInstall.tar.gz
+
+
+# edit the ~/.bash_profile
+echo 'export PATH=$PATH:/usr/local/go/bin' >> .bash_profile
+
+echo 'export GOPATH=$HOME/wrk' >> .bash_profile	
+
+echo 'export PATH=$PATH:$GOPATH/bin' >> .bash_profile
+
+# run the .bash_profile script to set the environment
+source .bash_profile
+
+# leave the instance
+exit
+
+# terminate the instance create the image
+# Name of disk will default to name of instance being deleted
+gcloud compute instances delete my-ins --keep-disks all
+
+# add the image to the project repository
+gcloud compute images create my-ins-image --source-disk my-ins
+
+# check that the image is there
+gcloud compute images list
+
+
+
+
