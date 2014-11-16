@@ -1,0 +1,7 @@
+# Get name of instance to delete
+gcloud compute instances list
+
+# Delete
+gcloud compute instances delete <InstanceName>
+
+
