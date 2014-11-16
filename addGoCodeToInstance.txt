@@ -1,0 +1,16 @@
+
+
+# FROM INSIDE MY ~/Downloads/golang directory:
+tar -cf wrk.tar wrk
+
+# AFTER COMPRESSING AND MOVING MY /wrk directory to the google-compute-engine directory, do this:
+gcloud compute copy-files /Users/ndborkedaunt/Downloads/google-compute-engine/wrk.tar my-ins:~/wrk.tar
+
+# Connect to instance
+gcloud compute instances ssh <InstanceName)
+
+# UNCOMPRESS CODE
+tar xf wrk.tar
+
+# Work away, like locally
+
