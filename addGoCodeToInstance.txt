@@ -7,7 +7,7 @@ tar -cf wrk.tar wrk
 gcloud compute copy-files /Users/ndborkedaunt/Downloads/google-compute-engine/wrk.tar my-ins:~/wrk.tar
 
 # Connect to instance
-gcloud compute instances ssh <InstanceName)
+gcloud compute ssh <InstanceName)
 
 # UNCOMPRESS CODE
 tar xf wrk.tar
