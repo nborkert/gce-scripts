@@ -4,6 +4,10 @@ gcloud compute instances create my-ins-std --image my-ins-image --machine-type n
 # For a large instance, do this
 gcloud compute instances create my-ins-large --image my-ins-image --machine-type n1-highmem-16
 
+# For CPU-intensive, low-memory needs, do this
+gcloud compute instances create my-ins-cpu --image my-ins-image --machine-type n1-highcpu-16
 
+# For CPU-intensive, normal-memory needs, do this
+gcloud compute instacnes create my-ins-cpu-normal-mem --image my-ins-image --machine-type n1-standard-16
 
 
